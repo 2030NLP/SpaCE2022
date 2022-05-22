@@ -154,7 +154,12 @@ const RootComponent = {
 
     onMounted(()=>{updateMD()});
 
-    const pageNames = ['index', 'news'];
+    const pages = {
+      'index': {name: "index", title: "首页", href: "./index", md: "md/index.md"},
+      'news': {name: "news", title: "最新消息", href: "./news", md: "md/news.md"},
+    };
+
+    const pageNames = Object.keys(pages);
 
     const pageName = () => {
       let tmpLL = location.pathname.split("/").filter(it=>it.length);
@@ -167,14 +172,9 @@ const RootComponent = {
 
     // 更新 MD
     const updateMD = async () => {
-      const map = {
-        '': "md/index.md",
-        'index': "md/index.md",
-        'news': "md/news.md",
-      };
       localData.pageName = pageName();
 
-      let mdUrl = map[localData.pageName] ?? map[''];
+      let mdUrl = pages[localData.pageName].md;
 
       let wrap;
       try {
@@ -186,6 +186,7 @@ const RootComponent = {
         // console.log(wrap);
         localData.mdContent = mkd.parse(wrap);
         await updateHLJS();
+        document.title = `SpaCE2022 | ${pages[localData.pageName].title}`;
       } catch (error) {
         throw error;
         return;
@@ -216,6 +217,7 @@ const RootComponent = {
       axios,
       anAxios,
       localData,
+      pages,
       pageName,
       //
     };
@@ -240,11 +242,8 @@ const RootComponent = {
           <div class="row my-2">
             <div class="col">
               <ul class="nav nav-pills justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link" :class="{active: pageName()=='index'}" href="./index">首页</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" :class="{active: pageName()=='news'}" href="./news">最新消息</a>
+                <li class="nav-item" v-for="page in pages">
+                  <a class="nav-link" :class="{active: pageName()==page.name}" :href="page.href">{{page.title}}</a>
                 </li>
               </ul>
             </div>
