@@ -287,7 +287,7 @@ const RootComponent = {
           </div>-->
           <div class="row text-center">
             <div class="col">
-              <div class="rounded overflow-hidden py-4 text-light" style="background:#4188bb">
+              <div class="rounded overflow-hidden py-4" style="border: 1px var(--pku-red) solid; color: var(--pku-red); --background:#4188bb;">
                 <div class="h1 fw-bold m-0 p-0">SpaCE2022</div>
                 <div>第二届中文空间语义理解评测</div>
               </div>
@@ -295,7 +295,7 @@ const RootComponent = {
           </div>
           <div class="row my-2">
             <div class="col">
-              <ul class="nav nav-pills justify-content-center">
+              <ul class="nav nav-pills --nav-tabs justify-content-center">
                 <li class="nav-item" v-for="page in pages">
                   <a class="nav-link" :class="{active: pageName()==page.name}" :href="page.href">{{page.title}}</a>
                 </li>
@@ -307,8 +307,23 @@ const RootComponent = {
               <div class="md-wrap p-2" v-html="localData.mdContent"></div>
             </div>
           </div>
+          <div class="row pb-5"></div>
+          <div class="d-none d-md-block row mt-2 py-5"></div>
         </main>
       </div>
+
+      <footer class=" text-center --rounded overflow-hidden py-5 text-light" style="border: 1px var(--pku-red) solid; background:var(--pku-red);">
+        <p class="small fw-bold">第二届中文空间语义理解评测  SpaCE2022</p>
+        <!--<p class="small">主办单位： <a class="text-decoration-none text-light" href="https://www.pku.edu.cn" target="_blank">北京大学</a></p>-->
+        <p class="small"><a class="text-decoration-none text-light" href="https://chinese.pku.edu.cn/" target="_blank">北京大学中文系</a></p>
+        <p class="small"><a class="text-decoration-none text-light" href="http://ccl.pku.edu.cn/" target="_blank">北京大学中国语言学研究中心</a></p>
+        <p class="small"><a class="text-decoration-none text-light" href="https://icl.pku.edu.cn/" target="_blank">北京大学计算语言学研究所</a></p>
+        <div class="mt-4 hstack gap-5 justify-content-center">
+          <div><a class="text-decoration-none text-light" href="https://www.pku.edu.cn" target="_blank"><img src="./images/pku-logo.png" height="30"></a></div>
+          <div><a class="text-decoration-none text-light" href="http://cips-cl.org/static/CCL2022/index.html" target="_blank"><img src="./images/ccl2022-logo.png" height="30"> CCL2022</a></div>
+        </div>
+      </footer>
+
     </div>
   `,
 };
