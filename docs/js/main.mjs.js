@@ -44,8 +44,59 @@ import __Wrap_of_marked__ from './modules_lib/marked_4.0.2_.min.mjs.js';
 import hljs from './modules_lib/Highlight_11.5.0_.mjs.js';
 import javascript from './modules_lib/Highlight_11.5.0_lang_javascript.mjs.js';
 import json from './modules_lib/Highlight_11.5.0_lang_json.mjs.js';
+// import python from './modules_lib/Highlight_11.5.0_lang_python.mjs.js';
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
+// hljs.registerLanguage('python', python);
+
+
+
+const escapeTest = /[&<>"']/;
+const escapeReplace = /[&<>"']/g;
+const escapeTestNoEncode = /[<>"']|&(?!#?\w+;)/;
+const escapeReplaceNoEncode = /[<>"']|&(?!#?\w+;)/g;
+const escapeReplacements = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+};
+const getEscapeReplacement = (ch) => escapeReplacements[ch];
+function myEscape(html, encode) {
+  if (encode) {
+    if (escapeTest.test(html)) {
+      return html.replace(escapeReplace, getEscapeReplacement);
+    }
+  } else {
+    if (escapeTestNoEncode.test(html)) {
+      return html.replace(escapeReplaceNoEncode, getEscapeReplacement);
+    }
+  }
+
+  return html;
+}
+
+const unescapeTest = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig;
+
+/**
+ * @param {string} html
+ */
+function myUnescape(html) {
+  // explicitly match decimal, hex, and named HTML entities
+  return html.replace(unescapeTest, (_, n) => {
+    n = n.toLowerCase();
+    if (n === 'colon') return ':';
+    if (n.charAt(0) === '#') {
+      return n.charAt(1) === 'x'
+        ? String.fromCharCode(parseInt(n.substring(2), 16))
+        : String.fromCharCode(+n.substring(1));
+    }
+    return '';
+  });
+}
+
+
 
 const RootComponent = {
   setup() {
@@ -56,34 +107,37 @@ const RootComponent = {
 
     const myRenderer = {
 
-      // code(code, infostring, escaped) {
+      code(code, infostring, escaped) {
 
-      //   console.log(code);
+        console.log(code);
 
-      //   const lang = (infostring || '').match(/\S*/)[0];
-      //   if (this.options.highlight) {
-      //     const out = this.options.highlight(code, lang);
-      //     if (out != null && out !== code) {
-      //       escaped = true;
-      //       code = out;
-      //     }
-      //   }
+        const lang = (infostring || '').match(/\S*/)[0];
+        if (this.options.highlight) {
+          const out = this.options.highlight(code, lang);
+          if (out != null && out !== code) {
+            // escaped = true;
+            code = out;
+          }
+        }
 
-      //   code = code.replace(/\n$/, '') + '\n';
+        code = code.replace(/\n$/, '') + '\n';
 
-      //   if (!lang) {
-      //     return '<pre><code>'
-      //       + (escaped ? code : escape(code, true))
-      //       + '</code></pre>\n';
-      //   }
+        const escapedCode = escaped ? code : myEscape(code, true);
+        console.log(escapedCode);
 
-      //   return '<pre><code class="'
-      //     + this.options.langPrefix
-      //     + escape(lang, true)
-      //     + '">'
-      //     + (escaped ? code : escape(code, true))
-      //     + '</code></pre>\n';
-      // },
+        if (!lang) {
+          return '<div class="code-block-wrap"><pre><code>'
+            + escapedCode
+            + '</code></pre></div>\n';
+        }
+
+        return '<div class="code-block-wrap"><pre><code class="'
+          + this.options.langPrefix
+          + myEscape(lang, true)
+          + '">'
+          + escapedCode
+          + '</code></pre></div>\n';
+      },
 
 
       /**
@@ -135,7 +189,7 @@ const RootComponent = {
       gfm: true,
       breaks: true,
       headerIds: true,
-      // highlight: true,
+      highlight: it=>it,
       sanitize: false,
       smartLists: true,
       smartypants: false,
@@ -194,7 +248,7 @@ const RootComponent = {
     };
 
     const updateHLJS = async () => {
-      console.log("highlight");
+      // console.log("highlight");
       setTimeout(()=>{
         document.querySelectorAll('pre code').forEach((el) => {
           hljs.highlightElement(el);
@@ -202,11 +256,11 @@ const RootComponent = {
       });
     };
 
-    watch(()=>localData.mdContent, async ()=>{
-      console.log("11");
-      await updateHLJS();
-      console.log("22");
-    });
+    // watch(()=>localData.mdContent, async ()=>{
+    //   console.log("11");
+    //   await updateHLJS();
+    //   console.log("22");
+    // });
 
 
 
