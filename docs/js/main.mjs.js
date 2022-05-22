@@ -133,9 +133,9 @@ const RootComponent = {
     mkd.use({
       pedantic: false,
       gfm: true,
+      breaks: true,
       headerIds: true,
       // highlight: true,
-      breaks: true,
       sanitize: false,
       smartLists: true,
       smartypants: false,
@@ -154,16 +154,25 @@ const RootComponent = {
 
     onMounted(()=>{updateMD()});
 
+    const pageNames = ['index', 'news'];
+
+    const pageName = () => {
+      let tmpLL = location.pathname.split("/").filter(it=>it.length);
+      console.log(tmpLL);
+      let that = tmpLL[tmpLL.length-1].replace(/\.html$/g, "");
+      console.log(that);
+      if (!pageNames.includes(that)) {that = "index"};
+      return that;
+    };
+
     // 更新 MD
     const updateMD = async () => {
       const map = {
         '': "md/index.md",
         'index': "md/index.md",
+        'news': "md/news.md",
       };
-      let tmpLL = location.pathname.split("/").filter(it=>it.length);
-      console.log(tmpLL);
-      localData.pageName = tmpLL[tmpLL.length-2];
-
+      localData.pageName = pageName();
 
       let mdUrl = map[localData.pageName] ?? map[''];
 
@@ -207,9 +216,48 @@ const RootComponent = {
       axios,
       anAxios,
       localData,
+      pageName,
       //
     };
   },
+  template: `
+    <div class="page-main">
+      <div class="container">
+        <main class="container main my-4 pt-3 pb-5 rounded">
+          <!--<div class="row text-center">
+            <div class="col">
+              <div class="rounded overflow-hidden"><img src="./images/banner.png"></div>
+            </div>
+          </div>-->
+          <div class="row text-center">
+            <div class="col">
+              <div class="rounded overflow-hidden py-4 text-light" style="background:#4188bb">
+                <div class="h1 fw-bold m-0 p-0">SpaCE2022</div>
+                <div>第二届中文空间语义理解评测</div>
+              </div>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class="col">
+              <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" :class="{active: pageName()=='index'}" href="./index">首页</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" :class="{active: pageName()=='news'}" href="./news">最新消息</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="md-wrap p-2" v-html="localData.mdContent"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  `,
 };
 
 const the_app = Vue_createApp(RootComponent);

@@ -20,6 +20,25 @@ th[align=center] {
 
 .md-wrap {}
 
+.md-wrap .block-color-red {
+  color: rgba(212, 76, 71, 1);
+  fill: rgba(212, 76, 71, 1);
+}
+
+.md-wrap blockquote {
+  padding: 0.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--bs-light, var(--bs-gray-100));
+  border-left: 0.25rem solid var(--bs-gray-300, var(--bs-gray-300));
+  border-top-right-radius: var(--bs-border-radius);
+  border-bottom-right-radius: var(--bs-border-radius);
+}
+
+.md-wrap blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
 .md-wrap p code,
 .md-wrap ul code {
   padding: .2em .4em;
@@ -33,7 +52,7 @@ th[align=center] {
 .md-wrap .hljs {
   color: #444;
   background: var(--bs-light);
-  border-radius: 0.375rem;
+  border-radius: var(--bs-border-radius);
 }
 
 /*.md-wrap pre {
