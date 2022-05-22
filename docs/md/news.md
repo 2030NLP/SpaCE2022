@@ -3,7 +3,7 @@
 
 ## 📮 最新消息
 
-本页面用于发布关于 **第二届中文空间语义理解评测<small>（SpaCE2022）</small>** 的最新消息，<br/><span style="color:var(--notice-red)">**请各位参赛者保持关注本页面，了解评测最新动态和要求**</span>，感谢大家的参与!
+<p class="text-center">本页面用于发布关于 <strong>第二届中文空间语义理解评测<small>（SpaCE2022）</small></strong> 的最新消息，<br/><span style="color:var(--notice-red)"><strong>请各位参赛者保持关注本页面，了解评测最新动态和要求</strong></span>，谢谢!</p>
 
 <br/>
 

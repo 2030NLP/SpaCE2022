@@ -55,6 +55,10 @@ th[align=center] {
   fill: rgba(212, 76, 71, 1);
 }
 
+.md-wrap a {
+  text-decoration: none;
+}
+
 .md-wrap blockquote {
   padding: 0.5rem 0.75rem;
   margin-top: 1.25rem;
@@ -92,6 +96,15 @@ th[align=center] {
 
 .md-wrap .table-wrap {
   overflow: auto;
+}
+
+.md-wrap .h1,
+.md-wrap h1,
+.md-wrap .h2,
+.md-wrap h2,
+.md-wrap .h3,
+.md-wrap h3 {
+  text-align: center;
 }
 
 .md-wrap .h1,

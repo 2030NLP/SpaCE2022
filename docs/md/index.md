@@ -3,7 +3,15 @@
 
 # 第二届中文空间语义理解评测<small>（SpaCE2022）</small>
 
-<br/>
+> - [任务简介](#intro)
+> - [数据概况](#data-overview)
+> - [评测指标](#eval)
+> - [比赛日程](#schedule)
+> - [报名方式](#reg)
+> - [奖项设置](#award)
+> - [评测委员会](#stuff)
+
+<br/><span id="intro"></span>
 
 ### 1.  任务内容
 
@@ -46,7 +54,7 @@ SpaCE2022 与 SpaCE2021 相比，有如下变化：
 
 
 
-<br/>
+<br/><span id="data-overview"></span>
 
 ### 2.  评测数据
 
@@ -144,7 +152,7 @@ false
 
 
 
-<br/>
+<br/><span id="eval"></span>
 
 ### 3.  评价标准
 
@@ -187,7 +195,7 @@ Z = (X - X̄) / s
 
 
 
-<br/>
+<br/><span id="schedule"></span>
 
 ### 4.  评测赛程
 
@@ -207,7 +215,7 @@ Z = (X - X̄) / s
 
 
 
-<br/>
+<br/><span id="reg"></span>
 
 ### 5.  报名方式
 
@@ -215,7 +223,7 @@ Z = (X - X̄) / s
 
 
 
-<br/>
+<br/><span id="award"></span>
 
 ### 6.  奖项设置
 
@@ -231,7 +239,7 @@ Z = (X - X̄) / s
 
 
 
-<br/>
+<br/><span id="stuff"></span>
 
 ### 7.  评测委员会
 
