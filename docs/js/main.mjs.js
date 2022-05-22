@@ -37,10 +37,110 @@ import {
 import axios from './modules_lib/axios_0.26.1_.mjs.js';
 import __Wrap_of_marked__ from './modules_lib/marked_4.0.2_.min.mjs.js';
 
+// import hljs from './modules_lib/highlight.js/lib/core';
+// import javascript from './modules_lib/highlight.js/lib/languages/javascript';
+// hljs.registerLanguage('javascript', javascript);
+
+import hljs from './modules_lib/Highlight_11.5.0_.mjs.js';
+import javascript from './modules_lib/Highlight_11.5.0_lang_javascript.mjs.js';
+import json from './modules_lib/Highlight_11.5.0_lang_json.mjs.js';
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('json', json);
+
 const RootComponent = {
   setup() {
 
     const mkd = marked;
+
+    const myTokenizer = {};
+
+    const myRenderer = {
+
+      // code(code, infostring, escaped) {
+
+      //   console.log(code);
+
+      //   const lang = (infostring || '').match(/\S*/)[0];
+      //   if (this.options.highlight) {
+      //     const out = this.options.highlight(code, lang);
+      //     if (out != null && out !== code) {
+      //       escaped = true;
+      //       code = out;
+      //     }
+      //   }
+
+      //   code = code.replace(/\n$/, '') + '\n';
+
+      //   if (!lang) {
+      //     return '<pre><code>'
+      //       + (escaped ? code : escape(code, true))
+      //       + '</code></pre>\n';
+      //   }
+
+      //   return '<pre><code class="'
+      //     + this.options.langPrefix
+      //     + escape(lang, true)
+      //     + '">'
+      //     + (escaped ? code : escape(code, true))
+      //     + '</code></pre>\n';
+      // },
+
+
+      /**
+       * @param {string} text
+       * @param {string} level
+       * @param {string} raw
+       * @param {any} slugger
+       */
+      heading(text, level, raw, slugger) {
+        const mm = {
+          // "1": "mt-5 mb-4",
+          // "2": "mt-4 mb-3",
+          // "3": "mt-3 mb-2",
+          // "4": "mt-2 mb-1",
+          // "5": "my-1",
+          // "6": "my-1",
+        };
+        let idText = "";
+        if (this.options.headerIds) {
+          const id = this.options.headerPrefix + slugger.slug(raw);
+          idText = ` id="${id}"`;
+        }
+        return `<h${level} class="h${level} ${mm[level]}"${idText}>${text}</h${level}>\n`;
+      },
+
+      /**
+       * @param {string} header
+       * @param {string} body
+       */
+      table(header, body) {
+        if (body) {body = `<tbody>${body}</tbody>`;};
+        return `<div class="table-wrap"><table class="table table-bordered">\n`
+          + `<thead>\n${header}</thead>\n`
+          + body
+          + `</table></div>\n`;
+      },
+
+    };
+
+    const myExtension = {
+      tokenizer: myTokenizer,
+      renderer: myRenderer,
+    };
+
+    mkd.use(myExtension);
+
+    mkd.use({
+      pedantic: false,
+      gfm: true,
+      headerIds: true,
+      // highlight: true,
+      breaks: true,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false,
+      xhtml: true,
+    });
 
     // 一个 axios 实例，方便在控制台调试
     const anAxios = axios.create({
@@ -74,19 +174,36 @@ const RootComponent = {
           method: 'get',
         });
         wrap = (response.data);
-        console.log(wrap);
+        // console.log(wrap);
         localData.mdContent = mkd.parse(wrap);
+        await updateHLJS();
       } catch (error) {
         throw error;
         return;
       };
     };
 
+    const updateHLJS = async () => {
+      console.log("highlight");
+      setTimeout(()=>{
+        document.querySelectorAll('pre code').forEach((el) => {
+          hljs.highlightElement(el);
+        }, 0);
+      });
+    };
+
+    watch(()=>localData.mdContent, async ()=>{
+      console.log("11");
+      await updateHLJS();
+      console.log("22");
+    });
+
 
 
     return {
       //
       mkd,
+      hljs,
       axios,
       anAxios,
       localData,
