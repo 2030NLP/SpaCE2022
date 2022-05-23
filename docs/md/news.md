@@ -13,5 +13,6 @@
 <br/>
 
 - 相关链接：
-  - [SpaCE2021](https://github.com/2030NLP/SpaCE2021)
-  - [基于前提的跨模态推理评测](https://2030nlp.github.io/PMR/evaluation.html)
+  - [首届中文空间语义理解评测 SpaCE2021](https://github.com/2030NLP/SpaCE2021)
+  - [CCL 2022 基于前提的跨模态推理评测](https://2030nlp.github.io/PMR/evaluation.html)
+  - [CCL 2022 中文语法纠错评测](https://github.com/blcuicall/CCL2022-CGEC)
