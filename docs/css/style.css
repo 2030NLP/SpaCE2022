@@ -1,6 +1,7 @@
-/*body {
-  background: #eaebee;
-}*/
+body {
+  /*background: #eaebee;*/
+  /*background: #fafafa;*/
+}
 img {
   display: inline-block;
   max-width: 100%;
@@ -46,6 +47,25 @@ th[align=center] {
   --bs-nav-tabs-link-active-bg: #fff;
   --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #fff;
   border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+
+.page-cover {
+  position: fixed;
+  top:0; right:0; bottom:0; left:0;
+  overflow: hidden;
+  background: #fff;
+  z-index: 99999;
+}
+
+.main {
+  max-width: 900px;
+  min-height: 100vh;
+  background-color: #fff;
+  background-image: url(../images/feet.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  /*box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.05);*/
 }
 
 .md-wrap {}
@@ -151,21 +171,3 @@ th[align=center] {
 
 
 
-
-.page-cover {
-  position: fixed;
-  top:0; right:0; bottom:0; left:0;
-  overflow: hidden;
-  background: #fff;
-  z-index: 99999;
-}
-
-.main {
-  max-width: 900px;
-  min-height: 100vh;
-  background-color: #fff;
-  background-image: url(../images/feet.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-}

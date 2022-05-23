@@ -279,7 +279,7 @@ const RootComponent = {
   template: `
     <div class="page-main">
       <div class="container">
-        <main class="container main my-4 pt-3 pb-5 rounded">
+        <main class="container main mt-4 mb-2 pt-3 pb-5 rounded">
           <!--<div class="row text-center">
             <div class="col">
               <div class="rounded overflow-hidden"><img src="./images/banner.png"></div>
