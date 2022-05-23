@@ -211,6 +211,7 @@ const RootComponent = {
     const pages = {
       'index': {name: "index", title: "首页", href: "./index", md: "md/index.md"},
       'news': {name: "news", title: "最新消息", href: "./news", md: "md/news.md"},
+      'leaderboard': {name: "leaderboard", title: "排行榜", href: "./leaderboard", md: "md/leaderboard.md"},
     };
 
     const pageNames = Object.keys(pages);
