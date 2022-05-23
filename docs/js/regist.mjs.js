@@ -132,7 +132,7 @@ const RootComponent = {
     };
 
     const doSubmit = async (form) => {
-      return true;
+      return false;
     };
 
     const submitForm = async () => {
