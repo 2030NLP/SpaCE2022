@@ -49,9 +49,12 @@ SpaCE2022 与 SpaCE2021 相比，有如下变化：
 
 > 注：第一届中文空间语义理解评测（SpaCE2021）的相关资源可访问以下链接获取：
 >
-> - Github 仓库： https://github.com/2030NLP/SpaCE2021
-> - 评测网站： http://ccl.pku.edu.cn:8084/SpaCE2021/
-> - 研讨会资讯： http://cips-cl.org/static/CCL2021/cclEval/taskEvaluation/index.html
+> - Github 仓库： <a target="_blank" href="https://github.com/2030NLP/SpaCE2021">https://github.com/2030NLP/SpaCE2021</a>
+> - 评测网站： <a target="_blank" href="http://ccl.pku.edu.cn:8084/SpaCE2021/">http://ccl.pku.edu.cn:8084/SpaCE2021/</a>
+> - CCL2021 评测研讨会资讯： <a target="_blank" href="http://cips-cl.org/static/CCL2021/cclEval/taskEvaluation/index.html">http://cips-cl.org/static/CCL2021/cclEval/taskEvaluation/index.html</a>
+<!-- > - Github 仓库： https://github.com/2030NLP/SpaCE2021 -->
+<!-- > - 评测网站： http://ccl.pku.edu.cn:8084/SpaCE2021/ -->
+<!-- > - 研讨会资讯： http://cips-cl.org/static/CCL2021/cclEval/taskEvaluation/index.html -->
 
 
 
@@ -137,7 +140,9 @@ false
     {"#枕头#": {"事件": "%走%", "起点": "房##内^房角", "方向": "房门"}}]}
 ```
 
-任务采用的标注规范为北京大学SpaCE2022评测任务课题组提出的《CSpaceBank_中文文本空间语义信息标注规范》。（请看附件）
+任务采用的标注规范为北京大学SpaCE2022评测任务课题组提出的《**CSpaceBank_中文文本空间语义信息标注规范**》。
+
+> <span class="fw-bold" style="color:var(--notice-red)">样例仅供参考，实际评测格式可能有所调整。规范文档将择日放出，敬请关注。</span>
 
 
 
@@ -212,7 +217,9 @@ Z = (X - X̄) / s
 | 9月30日 | 公布结果 |
 | 10月14日~10月16日 | 评测研讨会 |
 
-（以上时间均为暂定，请关注 [CCL 2022](http://cips-cl.org/static/CCL2022/index.html) 官方网站。）
+<!-- （以上时间均为暂定，请关注 [CCL 2022](http://cips-cl.org/static/CCL2022/index.html) 官方网站。） -->
+（以上时间均为暂定，请关注 <a target="_blank" href="http://cips-cl.org/static/CCL2022/index.html">CCL 2022</a> 官方网站。）
+
 
 
 
@@ -260,6 +267,8 @@ Z = (X - X̄) / s
 
 ### 附录
 
-- [第二届中文空间语义理解评测 SpaCE2022 参赛协议](https://github.com/2030NLP/SpaCE2022/blob/main/Agreement.md)
-- [第二届中文空间语义理解评测 SpaCE2022 数据集使用许可](https://github.com/2030NLP/SpaCE2022/blob/main/data/LICENSE.md)
+- <a target="_blank" href="https://github.com/2030NLP/SpaCE2022/blob/main/Agreement.md">第二届中文空间语义理解评测 SpaCE2022 参赛协议</a>
+- <a target="_blank" href="https://github.com/2030NLP/SpaCE2022/blob/main/data/LICENSE.md">第二届中文空间语义理解评测 SpaCE2022 数据集使用许可</a>
+<!-- - [第二届中文空间语义理解评测 SpaCE2022 参赛协议](https://github.com/2030NLP/SpaCE2022/blob/main/Agreement.md) -->
+<!-- - [第二届中文空间语义理解评测 SpaCE2022 数据集使用许可](https://github.com/2030NLP/SpaCE2022/blob/main/data/LICENSE.md) -->
 

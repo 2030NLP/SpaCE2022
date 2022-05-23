@@ -1,9 +1,9 @@
 
+// https://2030nlp.github.io/SpaCE2022/
+
 // 基本信息 变量
 const APP_NAME = "SpaCE2022";
-const APP_VERSION = "22-0518-1956";
-const PROJ_DESC = "SpaCE2022";
-const PROJ_PREFIX = "Sp22";
+const APP_VERSION = "22-0523-00";
 
 // 开发环境 和 生产环境 的 控制变量
 const DEVELOPING = location?.hostname=="2030nlp.github.io" ? 0 : 1;
@@ -12,12 +12,12 @@ if (DEVELOPING) {
 } else {
   console.log("PRODUCTION");
 };
-const DEVELOPING_LOCAL = 0;
-const API_BASE_DEV_LOCAL = "http://127.0.0.1:5000";
-const DEV_HOSTS = ["http://192.168.124.5:8888", "http://192.168.1.100:8888", "http://10.1.108.200:8888/", "http://10.0.55.176:8888/", "http://10.1.124.56:8888/"];
-const API_BASE_DEV = DEV_HOSTS[0];
-const API_BASE_PROD = "https://sp22.nlpsun.cn";
-const API_BASE = DEVELOPING ? API_BASE_DEV : API_BASE_PROD;
+// const DEVELOPING_LOCAL = 0;
+// const API_BASE_DEV_LOCAL = "http://127.0.0.1:5000";
+// const DEV_HOSTS = ["http://192.168.124.5:8888", "http://192.168.1.100:8888", "http://10.1.108.200:8888/", "http://10.0.55.176:8888/", "http://10.1.124.56:8888/"];
+// const API_BASE_DEV = DEV_HOSTS[0];
+// const API_BASE_PROD = "https://sp22.nlpsun.cn";
+// const API_BASE = DEVELOPING ? API_BASE_DEV : API_BASE_PROD;
 
 // 引入依赖的模块
 
@@ -97,85 +97,88 @@ function myUnescape(html) {
 }
 
 
+const myTokenizer = {};
+
+const myRenderer = {
+
+  // https://marked.js.org/using_pro#renderer
+  // https://github.com/markedjs/marked/blob/master/src/Renderer.js
+
+  code(code, infostring, escaped) {
+
+    console.log(code);
+
+    const lang = (infostring || '').match(/\S*/)[0];
+    if (this.options.highlight) {
+      const out = this.options.highlight(code, lang);
+      if (out != null && out !== code) {
+        // escaped = true;
+        code = out;
+      }
+    }
+
+    code = code.replace(/\n$/, '') + '\n';
+
+    const escapedCode = escaped ? code : myEscape(code, true);
+    console.log(escapedCode);
+
+    if (!lang) {
+      return '<div class="code-block-wrap"><pre><code>'
+        + escapedCode
+        + '</code></pre></div>\n';
+    }
+
+    return '<div class="code-block-wrap"><pre><code class="'
+      + this.options.langPrefix
+      + myEscape(lang, true)
+      + '">'
+      + escapedCode
+      + '</code></pre></div>\n';
+  },
+
+
+  /**
+   * @param {string} text
+   * @param {string} level
+   * @param {string} raw
+   * @param {any} slugger
+   */
+  heading(text, level, raw, slugger) {
+    const mm = {
+      // "1": "mt-5 mb-4",
+      // "2": "mt-4 mb-3",
+      // "3": "mt-3 mb-2",
+      // "4": "mt-2 mb-1",
+      // "5": "my-1",
+      // "6": "my-1",
+    };
+    let idText = "";
+    if (this.options.headerIds) {
+      const id = this.options.headerPrefix + slugger.slug(raw);
+      idText = ` id="${id}"`;
+    }
+    return `<h${level} class="h${level} ${mm[level]}"${idText}>${text}</h${level}>\n`;
+  },
+
+  /**
+   * @param {string} header
+   * @param {string} body
+   */
+  table(header, body) {
+    if (body) {body = `<tbody>${body}</tbody>`;};
+    return `<div class="table-wrap"><table class="table table-bordered">\n`
+      + `<thead>\n${header}</thead>\n`
+      + body
+      + `</table></div>\n`;
+  },
+
+};
+
 
 const RootComponent = {
   setup() {
 
     const mkd = marked;
-
-    const myTokenizer = {};
-
-    const myRenderer = {
-
-      code(code, infostring, escaped) {
-
-        console.log(code);
-
-        const lang = (infostring || '').match(/\S*/)[0];
-        if (this.options.highlight) {
-          const out = this.options.highlight(code, lang);
-          if (out != null && out !== code) {
-            // escaped = true;
-            code = out;
-          }
-        }
-
-        code = code.replace(/\n$/, '') + '\n';
-
-        const escapedCode = escaped ? code : myEscape(code, true);
-        console.log(escapedCode);
-
-        if (!lang) {
-          return '<div class="code-block-wrap"><pre><code>'
-            + escapedCode
-            + '</code></pre></div>\n';
-        }
-
-        return '<div class="code-block-wrap"><pre><code class="'
-          + this.options.langPrefix
-          + myEscape(lang, true)
-          + '">'
-          + escapedCode
-          + '</code></pre></div>\n';
-      },
-
-
-      /**
-       * @param {string} text
-       * @param {string} level
-       * @param {string} raw
-       * @param {any} slugger
-       */
-      heading(text, level, raw, slugger) {
-        const mm = {
-          // "1": "mt-5 mb-4",
-          // "2": "mt-4 mb-3",
-          // "3": "mt-3 mb-2",
-          // "4": "mt-2 mb-1",
-          // "5": "my-1",
-          // "6": "my-1",
-        };
-        let idText = "";
-        if (this.options.headerIds) {
-          const id = this.options.headerPrefix + slugger.slug(raw);
-          idText = ` id="${id}"`;
-        }
-        return `<h${level} class="h${level} ${mm[level]}"${idText}>${text}</h${level}>\n`;
-      },
-
-      /**
-       * @param {string} header
-       * @param {string} body
-       */
-      table(header, body) {
-        if (body) {body = `<tbody>${body}</tbody>`;};
-        return `<div class="table-wrap"><table class="table table-bordered">\n`
-          + `<thead>\n${header}</thead>\n`
-          + body
-          + `</table></div>\n`;
-      },
-
-    };
 
     const myExtension = {
       tokenizer: myTokenizer,
@@ -194,7 +197,7 @@ const RootComponent = {
       smartLists: true,
       smartypants: false,
       xhtml: true,
-    });
+    });  // https://marked.js.org/using_advanced#options
 
     // 一个 axios 实例，方便在控制台调试
     const anAxios = axios.create({
