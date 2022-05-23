@@ -317,7 +317,7 @@ const RootComponent = {
       </div>
 
       <footer class=" text-center --rounded overflow-hidden py-5 text-light" style="border: 1px var(--pku-red) solid; background:var(--pku-red);">
-        <p class="small fw-bold">第二届中文空间语义理解评测  SpaCE2022</p>
+        <p class="small fw-bold"><a class="text-decoration-none text-light" href="https://2030nlp.github.io/SpaCE2022">第二届中文空间语义理解评测  SpaCE2022</a></p>
         <!--<p class="small">主办单位： <a class="text-decoration-none text-light" href="https://www.pku.edu.cn" target="_blank">北京大学</a></p>-->
         <p class="small"><a class="text-decoration-none text-light" href="https://chinese.pku.edu.cn/" target="_blank">北京大学中文系</a></p>
         <p class="small"><a class="text-decoration-none text-light" href="http://ccl.pku.edu.cn/" target="_blank">北京大学中国语言学研究中心</a></p>

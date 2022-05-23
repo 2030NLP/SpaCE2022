@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Expires" CONTENT="0">
+
+  <title>SpaCE2022 | 报名表</title>
+
+  <link href="css/bootstrap_5.2.0-beta1_.min.css" rel="stylesheet">
+  <!-- <link href="css/github.hljs.css" rel="stylesheet"> -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <style type="text/css">
+    .alert-wrap {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2050;
+      display: none;
+      width: 360px;
+      max-width: 80vw;
+      overflow: hidden;
+      outline: 0;
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.5s;
+    }
+    .fade-enter, .fade-leave-to
+    /* .fade-leave-active, 2.1.8 版本以下 */
+    {
+      opacity: 0;
+      /*display: none;*/
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+<div class="bodywrap" id="bodywrap">
+  <div class="page-main">
+    <div class="container">
+      <main class="container main mt-4 mb-2 pt-3 pb-5 rounded">
+        <!--<div class="row text-center">
+          <div class="col">
+            <div class="rounded overflow-hidden"><img src="./images/banner.png"></div>
+          </div>
+        </div>-->
+        <div class="row text-center">
+          <div class="col">
+            <div class="rounded overflow-hidden py-4" style="border: 1px var(--pku-red) solid; color: var(--pku-red); --background:#4188bb;">
+              <div class="h1 fw-bold m-0 p-0">SpaCE2022</div>
+              <div>第二届中文空间语义理解评测</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+
+
+
+
+
+
+
+
+    <div class="container page my-5" id="the_form" v-if="!submission_succeeded"><div class="container py-2">
+        <div class="row my-2 g-4">
+            <div class="col-12">
+                <h2>第二届中文空间语义理解评测<small><small>（SpaCE2022）</small></small>报名表</h2>
+                <p class="text-muted">欢迎报名！</p>
+            </div>
+        </div>
+        <form class="row my-4 g-4">
+          <!-- --- -->
+          <div class="col-md-6">
+            <label for="team_name" class="form-label">队伍名称 *</label>
+            <input type="text" class="form-control" :class="form.team_name?(v(check_team_name)?'is-valid':'is-invalid'):''" id="team_name" v-model="form.team_name" required>
+            <div class="form-text" :class="form.team_name?(v(check_team_name)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 不超过10个字符。
+            </div>
+          </div>
+          <!-- --- -->
+          <div class="col-md-12">
+            <label for="people" class="form-label">参赛人员 *<!-- <small>（含队长）</small> --></label>
+            <textarea class="form-control" id="people" v-model="form.people" required></textarea>
+            <div class="form-text">
+              <strong>必填</strong> 人名之间用<strong>逗号</strong>分隔，默认第 1 位为队长。<span :class="form.people?(v(check_people)?'d-none':'d-inline'):'d-none'">建议每队不超过10人（不严格限制）。</span>
+            </div>
+          </div>
+          <!-- --- -->
+          <div class="col-md-6">
+            <label for="team_type" class="form-label">来源 *</label>
+            <select class="form-select" :class="v(check_team_type)?'is-valid':(form.team_type=='【请选择】'?'--is-invalid':'')" id="team_type" v-model="form.team_type" required>
+              <option value="【请选择】">【请选择】</option>
+              <option value="学术机构">学术机构</option>
+              <option value="商业机构">商业机构</option>
+              <option value="独立团队或个人">独立团队或个人</option>
+              <option value="其他">其他</option>
+            </select>
+            <div class="form-text" :class="form.team_type?(v(check_team_type)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 队伍来自于何种性质的单位。
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="institution" class="form-label">隶属单位全称 *</label>
+            <input type="text" class="form-control" :class="form.institution?(v(check_institution)?'is-valid':'is-invalid'):''" id="institution" v-model="form.institution" required>
+            <div class="form-text" :class="form.institution?(v(check_institution)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 如：“某某大学 / 某某公司 / 某某研究所” / “个人” / “独立团队” 等。
+            </div>
+          </div>
+          <!-- <div class="col-md-4">
+            <label for="institution2" class="form-label">隶属单位简称</label>
+            <input type="text" class="form-control"id="institution2" v-model="form.institution2">
+            <div class="form-text">
+              隶属单位全称超过8个字时建议填写。
+            </div>
+          </div> -->
+          <!-- <div class="col-md-4">
+            <label for="group" class="form-label">隶属团体</label>
+            <input type="text" class="form-control"id="group" v-model="form.group">
+            <div class="form-text">
+              如：某某实验室 / 某某科研团队 / 某某部门 / 某年级某班 等。
+            </div>
+          </div> -->
+          <!-- --- -->
+          <!-- <div class="col-md-4">
+            <label for="leader" class="form-label">队长 *</label>
+            <input type="text" class="form-control" :class="form.leader?(v(check_leader)?'is-valid':'is-invalid'):''" id="leader" v-model="form.leader" required>
+            <div class="form-text" :class="form.leader?(v(check_leader)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 参赛系统最主要的贡献者或队伍的组织者。
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="card_id" class="form-label">队长证件号码 *</label>
+            <input type="text" class="form-control" :class="form.card_id?(v(check_card_id)?'is-valid':'is-invalid'):''" id="card_id" v-model="form.card_id" required>
+            <div class="form-text" :class="form.card_id?(v(check_card_id)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 队长的身份证号或其他有效证件的号码。
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="card_type" class="form-label">队长证件类型 *</label>
+            <input type="text" class="form-control"id="card_type" v-model="form.card_type">
+            <div class="form-text">
+              若证件不是中国大陆身份证，请说明证件类型。
+            </div>
+          </div> -->
+          <!-- --- -->
+          <div class="col-md-6">
+            <label for="phone" class="form-label">联系电话 *</label>
+            <input type="text" class="form-control" :class="form.phone?(v(check_phone)?'is-valid':'is-invalid'):''" id="phone" v-model="form.phone" required>
+            <div class="form-text" :class="form.phone?(v(check_phone)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 请使用中国大陆手机/电话号码。优先填写队长手机号。
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">联系邮箱 *</label>
+            <input type="text" class="form-control" :class="form.email?(v(check_email)?'is-valid':'is-invalid'):''" id="email" v-model="form.email" required>
+            <div class="form-text" :class="form.email?(v(check_email)?'valid-feedback':'invalid-feedback'):''">
+              <strong>必填</strong> 优先填写队长邮箱。重要，主办方将通过邮件确认您已参赛。
+            </div>
+          </div>
+        </form>
+        <div class="row my-4 g-4">
+          <!-- --- -->
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" v-model="form.agree" :class="form.agree?'is-valid':''" type="checkbox" id="agree" required>
+              <label class="form-check-label" for="agree">
+                阅读、理解并同意 <a href="https://github.com/2030NLP/SpaCE2022/blob/main/Agreement.md" target="_blank">参赛协议</a> 和 <a href="https://github.com/2030NLP/SpaCE2022/blob/main/data/LICENSE.md" target="_blank">数据集使用许可</a>。
+              </label>
+              <div v-if="!form.agree" id="agreeFeedback" class="form-text">
+                请阅读并同意上述协议。
+              </div>
+              <div v-if="form.agree" id="agreeFeedback" class="valid-feedback">
+                感谢支持！
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" :disabled="!v(check_all)" @click="submitIt">提交报名表</button>
+            <!-- <button class="btn btn-danger" @click="reset">清空后重新填写</button> -->
+          </div>
+        </div>
+    </div></div>
+
+    <div class="container page my-5" id="the_result" v-show="submission_succeeded"><div class="container py-2">
+        <div class="row my-4 g-4">
+            <div class="col-12">
+                <h2>第二届中文空间语义理解评测<small><small>（SpaCE2022）</small></small>报名表</h2>
+            </div>
+        </div>
+        <div class="row my-4 g-4">
+            <div class="col-12">
+                <p>提交成功！</p>
+                <p>请扫描下方二维码加入微信参赛交流群，进群请修改备注为 <code>队名+姓名</code> ，如 <code>{{form.team_name}}+{{form.leader}}</code> 。</p>
+                <p><div id="qrcode"></div></p>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" @click="reset">重新填写报名表</button>
+            </div>
+        </div>
+    </div></div>
+
+    <div class="container page my-5" id="the_history" v-if="history.length"><div class="container py-2">
+        <div class="row my-2 g-4">
+            <div class="col-12">
+                <h4>提交历史</h4>
+            </div>
+            <div class="col-12">
+                <ul>
+                    <li v-for="hh in history">队伍「{{hh.team_name}}」，来自{{hh.institution}}，队长是{{hh.leader}}，邮箱是{{hh.email}}。</li>
+                </ul>
+            </div>
+        </div>
+    </div></div>
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+        <div class="row pb-5"></div>
+        <div class="d-none d-md-block row mt-2 py-5"></div>
+      </main>
+    </div>
+
+    <footer class=" text-center --rounded overflow-hidden py-5 text-light" style="border: 1px var(--pku-red) solid; background:var(--pku-red);">
+      <p class="small fw-bold"><a class="text-decoration-none text-light" href="https://2030nlp.github.io/SpaCE2022">第二届中文空间语义理解评测  SpaCE2022</a></p>
+      <!--<p class="small">主办单位： <a class="text-decoration-none text-light" href="https://www.pku.edu.cn" target="_blank">北京大学</a></p>-->
+      <p class="small"><a class="text-decoration-none text-light" href="https://chinese.pku.edu.cn/" target="_blank">北京大学中文系</a></p>
+      <p class="small"><a class="text-decoration-none text-light" href="http://ccl.pku.edu.cn/" target="_blank">北京大学中国语言学研究中心</a></p>
+      <p class="small"><a class="text-decoration-none text-light" href="https://icl.pku.edu.cn/" target="_blank">北京大学计算语言学研究所</a></p>
+      <div class="mt-4 hstack gap-5 justify-content-center">
+        <div><a class="text-decoration-none text-light" href="https://www.pku.edu.cn" target="_blank"><img src="./images/pku-logo.png" height="30"></a></div>
+        <div><a class="text-decoration-none text-light" href="http://cips-cl.org/static/CCL2022/index.html" target="_blank"><img src="./images/ccl2022-logo.png" height="30"> CCL2022</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <transition name = "modal-fade"><div v-show="ui.modal_open" class="modal-wrap">
+  <div class="modal-backdrop show"></div>
+  <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" style="display: block;" aria-modal="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" @click="toggle_modal('')">×</span>
+          </button>
+        </div>
+        <div class="modal-body"><div>
+          <div>
+            <p></p>
+          </div>
+        </div></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" @click="toggle_modal('')">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </transition>
+
+  <!-- Alert -->
+  <div class="alert-wrap" style="display: block;" ref="alert_wrap">
+    <transition name="fade" v-for="alert in ui.alerts">
+      <div v-show="alert?.show" class="alert alert-dismissible" :class="'alert-'+(alert?.style ?? 'info')">
+        <button type="button" class="btn-close" @click="removeAlert(alert?.idx)"></button>
+        <div v-html="alert.html"></div>
+      </div>
+    </transition>
+  </div>
+
+</div>
+<script type="module" src="js/regist.mjs.js"></script>
+</body>
+</html>
