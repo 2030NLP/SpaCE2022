@@ -12,12 +12,14 @@ if (DEVELOPING) {
 } else {
   console.log("PRODUCTION");
 };
-// const DEVELOPING_LOCAL = 0;
-// const API_BASE_DEV_LOCAL = "http://127.0.0.1:5000";
-// const DEV_HOSTS = ["http://192.168.124.5:8888", "http://192.168.1.100:8888", "http://10.1.108.200:8888/", "http://10.0.55.176:8888/", "http://10.1.124.56:8888/"];
-// const API_BASE_DEV = DEV_HOSTS[0];
-// const API_BASE_PROD = "https://sp22.nlpsun.cn";
-// const API_BASE = DEVELOPING ? API_BASE_DEV : API_BASE_PROD;
+const DEVELOPING_LOCAL = 0;
+const API_BASE_DEV_LOCAL = "http://127.0.0.1:5000";
+const DEV_HOSTS = ["http://192.168.124.5:8888", "http://192.168.1.100:8888", "http://10.1.108.200:8888/", "http://10.0.55.176:8888/", "http://10.1.124.56:8888/"];
+const API_BASE_DEV = DEV_HOSTS[0];
+const API_BASE_PROD = "https://sp22.nlpsun.cn";
+const API_BASE = DEVELOPING ? API_BASE_DEV : API_BASE_PROD;
+
+const BaseURL = `${API_BASE}/api/`;
 
 // 引入依赖的模块
 
@@ -80,38 +82,38 @@ const RootComponent = {
       //
     });
 
-    watch(()=>localData.form.people, ()=>{
-      localData.form.leader = localData.form.people?.split?.(/ *, *| *， */)?.[0];
+    watch(()=>localData.form?.people, ()=>{
+      localData.form.leader = localData.form?.people?.split?.(/ *, *| *， */)?.[0];
     });
 
     const check_team_name = computed(() => {
-      return localData.form.team_name && localData.form.team_name.length <= 10;
-    });
-    const check_team_type = computed(() => {
-      return localData.form.team_type && localData.form.team_type != "【请选择】";
+      return localData.form?.team_name?.length && localData.form?.team_name.length <= 10;
     });
     const check_institution = computed(() => {
-      return localData.form.institution;
+      return localData.form?.institution?.length;
     });
     const check_people = computed(() => {
-      return localData.form.people.length && localData.form.people.split(/ *, *| *， */).length <= 10;
-    });
-    const check_leader = computed(() => {
-      return localData.form.leader;
-    });
-    const check_card_id = computed(() => {
-      return localData.form.card_id;
-    });
-    const check_card_type = computed(() => {
-      return localData.form.card_type;
+      return localData.form?.people.length && localData.form?.people.split(/ *, *| *， */).length <= 10;
     });
     const check_phone = computed(() => {
-      let x = localData.form.phone.match(/\d{11}/);
-      return x && x[0] == localData.form.phone;
+      let x = localData.form?.phone.match(/\d{11}/);
+      return x && x[0] == localData.form?.phone;
     });
     const check_email = computed(() => {
-      let x = localData.form.email.match(/[^ ]+@[^ ]+\.[^ ]+/);
-      return x && x[0] == localData.form.email;
+      let x = localData.form?.email.match(/[^ ]+@[^ ]+\.[^ ]+/);
+      return x && x[0] == localData.form?.email;
+    });
+    const check_team_type = computed(() => {
+      return localData.form?.team_type && localData.form?.team_type != "【请选择】";
+    });
+    const check_leader = computed(() => {
+      return localData.form?.leader;
+    });
+    const check_card_id = computed(() => {
+      return localData.form?.card_id;
+    });
+    const check_card_type = computed(() => {
+      return localData.form?.card_type;
     });
 
     const check_all = computed(() => {
@@ -124,7 +126,7 @@ const RootComponent = {
       // check_leader.value &&
       // check_card_id.value &&
       // check_card_type.value &&
-      localData.form.agree;
+      localData.form?.agree;
     });
 
     const check_if_team_name_existed = async () => {
@@ -132,7 +134,15 @@ const RootComponent = {
     };
 
     const doSubmit = async (form) => {
-      return false;
+      const resp = await anAxios.request({
+        baseURL: BaseURL,
+        headers: {'Cache-Cotrol': 'no-cache'},
+        method: "post",
+        url: `/eval-register`,
+        timeout: 30000,
+        data: form,
+      });
+      return resp.data;
     };
 
     const submitForm = async () => {
@@ -140,27 +150,28 @@ const RootComponent = {
         let idx = push_alert('正在提交，请稍等……', 'info');
         let result = await doSubmit(localData.form);
         remove_alert(idx);
-        if (result) {
+        if (result?.code==200) {
           push_alert('提交成功！', 'success');
           localData.submission_succeeded = true;
-          localData.history.push(localData.form);
+          localData.history.push(result?.data);
         } else {
-          push_alert('提交时出现问题，请重试或与工作人员联系。', 'danger');
+          push_alert(`提交时出现问题（${result?.code} : ${result?.msg}），请稍后重试，或与工作人员联系。`, 'danger', 30000);
         };
       } catch(error) {
-        push_alert('提交时出现故障，请重试或与工作人员联系。', 'danger');
+        console.log(error);
+        push_alert(`提交时出现故障（${error}），请稍后重试，或与工作人员联系。`, 'danger', 30000);
       };
     };
 
     const submitIt = async () => {
       console.log(localData.form);
       let shouldSubmit = false;
-      let team_name_existed = await check_if_team_name_existed();
-      if (team_name_existed) {
-        push_alert('队名已经被别人使用，请重新取一个队名吧！', 'danger');
-        localData.form.team_name = "";
-        return;
-      };
+      // let team_name_existed = await check_if_team_name_existed();
+      // if (team_name_existed) {
+      //   push_alert('队名已经被别人使用，请重新取一个队名吧！', 'danger');
+      //   localData.form?.team_name = "";
+      //   return;
+      // };
       await submitForm();
     };
 

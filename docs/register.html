@@ -287,13 +287,13 @@
   <div class="alert-wrap" style="display: block;" ref="alert_wrap">
     <transition name="fade" v-for="alert in ui.alerts">
       <div v-show="alert?.show" class="alert alert-dismissible" :class="'alert-'+(alert?.style ?? 'info')">
-        <button type="button" class="btn-close" @click="removeAlert(alert?.idx)"></button>
+        <button type="button" class="btn-close" @click="remove_alert(alert?.idx)"></button>
         <div v-html="alert.html"></div>
       </div>
     </transition>
   </div>
 
 </div>
-<script type="module" src="js/regist.mjs.js"></script>
+<script type="module" src="js/register.mjs.js"></script>
 </body>
 </html>

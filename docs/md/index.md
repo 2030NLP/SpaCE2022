@@ -7,7 +7,7 @@
 > - [数据概况](#data-overview)
 > - [评测指标](#eval)
 > - [比赛日程](#schedule)
-> - [报名方式](#regist)
+> - [报名方式](#register)
 > - [奖项设置](#award)
 > - [评测委员会](#stuff)
 > - [附录](#appendix)
@@ -223,7 +223,7 @@ Z = (X - X̄) / s
 
 
 
-<br/><span id="regist"></span>
+<br/><span id="register"></span>
 
 ### 5.  报名方式
 
