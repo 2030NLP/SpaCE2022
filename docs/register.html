@@ -61,6 +61,15 @@
             </div>
           </div>
         </div>
+        <div class="row my-2">
+          <div class="col">
+            <ul class="nav nav-pills --nav-tabs justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="./index">返回首页</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="row">
           <div class="col">
 
@@ -75,7 +84,8 @@
         <div class="row my-2 g-4">
             <div class="col-12">
                 <h2>第二届中文空间语义理解评测<small><small>（SpaCE2022）</small></small>报名表</h2>
-                <p class="text-muted">欢迎报名！</p>
+                <br/>
+                <p class="text-muted">欢迎报名参赛！</p>
             </div>
         </div>
         <form class="row my-4 g-4">
@@ -177,13 +187,14 @@
                 阅读、理解并同意 <a href="https://github.com/2030NLP/SpaCE2022/blob/main/Agreement.md" target="_blank">参赛协议</a> 和 <a href="https://github.com/2030NLP/SpaCE2022/blob/main/data/LICENSE.md" target="_blank">数据集使用许可</a>。
               </label>
               <div v-if="!form.agree" id="agreeFeedback" class="form-text">
-                请阅读并同意上述协议。
+                请仔细阅读并同意上述协议。
               </div>
               <div v-if="form.agree" id="agreeFeedback" class="valid-feedback">
                 感谢支持！
               </div>
             </div>
           </div>
+          <!-- --- -->
           <div class="col-12">
             <button class="btn btn-primary" :disabled="!v(check_all)" @click="submitIt">提交报名表</button>
             <!-- <button class="btn btn-danger" @click="reset">清空后重新填写</button> -->

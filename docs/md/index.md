@@ -3,14 +3,30 @@
 
 # 第二届中文空间语义理解评测<small>（SpaCE2022）</small>
 
+空间范畴是人类认知中重要的基础范畴。理解文本中的空间信息不仅需要掌握字词含义，还需要具有常识或背景知识，要调动语言范畴之外的空间想象等认知能力。
+
+空间语义理解在NLP领域也长期受到关注，是NLP评测的重要内容之一，但以往相关评测任务主要关注语言中正确的空间语义信息的分析。人类在能够识别常规、正确的空间信息的同时，还能够识别异常、错误的空间信息。如对于“在四面签一个名字”，人类能够意识到其中存在异常，因为“一个名字”通常不会签在“四面”；又如“跳进山洞外”，“跳进”搭配的必须是表达一个空间内部方位的成分，如“山洞中、山洞里”，无法搭配“山洞外”。显然，空间方位表达的异常存在不同的类型，如词语搭配问题、上下文语义冲突问题、违反常识或背景信息的问题等。
+
+基于以上认识，我们于2021年依托 <a target="_blank" href="http://cips-cl.org/static/CCL2021/cclEval/taskEvaluation/index.html">CCL2021</a> 成功举办了首届中文空间语义理解评测任务（SpaCE，Spatial Cognition Evaluation）。
+
+今年，我们依托 <a href="http://cips-cl.org/static/CCL2022/index.html" target="_blank">CCL2022</a> ，继续推出<span style="color:var(--notice-red)">**第二届中文空间语义理解评测（SpaCE2022）**</span>。
+
+- 主办单位：北京大学
+- 组织者：詹卫东，穗志方
+- 工作人员：孙春晖，李楠，邢丹，王诚文，岳朋雪，王希豪，邱晓枫 等
+- 联系方式：sc_eval@163.com
+
+<a target="_blank" href="https://2030nlp.github.io/SpaCE2022/register"><span style="color:var(--notice-red)">👉 **点我立即报名** 👈</span></a>
+
 > - [任务简介](#intro)
 > - [数据概况](#data-overview)
 > - [评测指标](#eval)
 > - [比赛日程](#schedule)
 > - [报名方式](#register)
 > - [奖项设置](#award)
-> - [评测委员会](#stuff)
 > - [附录](#appendix)
+
+
 
 <br/><span id="intro"></span>
 
@@ -218,7 +234,7 @@ Z = (X - X̄) / s
 | 10月14日~10月16日 | 评测研讨会 |
 
 <!-- （以上时间均为暂定，请关注 [CCL 2022](http://cips-cl.org/static/CCL2022/index.html) 官方网站。） -->
-（以上时间均为暂定，请关注 <a target="_blank" href="http://cips-cl.org/static/CCL2022/index.html">CCL 2022</a> 官方网站。）
+（以上时间均为暂定，敬请关注 <a target="_blank" href="http://cips-cl.org/static/CCL2022/index.html">CCL2022</a> 官方网站。）
 
 
 
@@ -227,7 +243,9 @@ Z = (X - X̄) / s
 
 ### 5.  报名方式
 
-> <span class="fw-bold" style="color:var(--notice-red)">待定</span>
+请仔细阅读《<a target="_blank" href="https://github.com/2030NLP/SpaCE2022/blob/main/Agreement.md">第二届中文空间语义理解评测 SpaCE2022 参赛协议</a>》和《<a target="_blank" href="https://github.com/2030NLP/SpaCE2022/blob/main/data/LICENSE.md">第二届中文空间语义理解评测 SpaCE2022 数据集使用许可</a>》，
+
+然后点击进入 <a target="_blank" href="https://2030nlp.github.io/SpaCE2022/register">报名链接</a> 进行报名。
 
 
 
@@ -244,20 +262,6 @@ Z = (X - X̄) / s
 三等奖 0-4名 ，奖金合计 15000 元<!-- （如 1*15000, 2*7500, 3*5000, 4*3500） -->
 
 由中国中文信息学会为本次评测获奖队伍提供荣誉证书。
-
-
-
-<br/><span id="stuff"></span>
-
-### 7.  评测委员会
-
-单位：北京大学
-
-主席：詹卫东，穗志方
-
-工作人员：孙春晖，李楠，邢丹，王诚文，岳朋雪，王希豪，邱晓枫 等
-
-联系方式：sc_eval@163.com
 
 
 
