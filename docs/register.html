@@ -201,7 +201,9 @@
             <div class="col-12">
                 <p>提交成功！</p>
                 <p>请扫描下方二维码加入微信参赛交流群，进群请修改备注为 <code>队名+姓名</code> ，如 <code>{{form.team_name}}+{{form.leader}}</code> 。</p>
-                <p><div id="qrcode"></div></p>
+                <p><div id="qrcode">
+                  <img src="./images/qr.jpg" style="width: 320px; max-width: 100%;">
+                </div></p>
             </div>
             <div class="col-12">
                 <button class="btn btn-primary" @click="reset">重新填写报名表</button>
