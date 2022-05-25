@@ -106,7 +106,7 @@ const myRenderer = {
 
   code(code, infostring, escaped) {
 
-    console.log(code);
+    // console.log(code);
 
     const lang = (infostring || '').match(/\S*/)[0];
     if (this.options.highlight) {
@@ -120,7 +120,7 @@ const myRenderer = {
     code = code.replace(/\n$/, '') + '\n';
 
     const escapedCode = escaped ? code : myEscape(code, true);
-    console.log(escapedCode);
+    // console.log(escapedCode);
 
     if (!lang) {
       return '<div class="code-block-wrap"><pre><code>'
@@ -221,9 +221,9 @@ const RootComponent = {
 
     const pageName = () => {
       let tmpLL = location.pathname.split("/").filter(it=>it.length);
-      console.log(tmpLL);
+      // console.log(tmpLL);
       let that = tmpLL[tmpLL.length-1].replace(/\.html$/g, "");
-      console.log(that);
+      // console.log(that);
       if (!pageNames.includes(that)) {that = "index"};
       return that;
     };
@@ -233,11 +233,14 @@ const RootComponent = {
       localData.pageName = pageName();
 
       let mdUrl = pages[localData.pageName].md;
+      mdUrl = `${mdUrl}?x=${Math.ceil(Math.random()*999999999)}`;
+      console.log(mdUrl);
 
       let wrap;
       try {
         let response = await anAxios.request({
           url: mdUrl,
+          headers: {'Cache-Cotrol': 'no-cache'},
           method: 'get',
         });
         wrap = (response.data);
