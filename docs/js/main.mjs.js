@@ -212,9 +212,9 @@ const RootComponent = {
     onMounted(()=>{updateMD()});
 
     const pages = {
-      'index': {name: "index", title: "首页", href: "./index", md: "md/index.md"},
-      'news': {name: "news", title: "最新消息", href: "./news", md: "md/news.md"},
-      'leaderboard': {name: "leaderboard", title: "排行榜", href: "./leaderboard", md: "md/leaderboard.md"},
+      'index': {name: "index", title: "首页", href: "./index.html", md: "md/index.md"},
+      'news': {name: "news", title: "最新消息", href: "./news.html", md: "md/news.md"},
+      'leaderboard': {name: "leaderboard", title: "排行榜", href: "./leaderboard.html", md: "md/leaderboard.md"},
     };
 
     const pageNames = Object.keys(pages);
@@ -305,6 +305,9 @@ const RootComponent = {
               <ul class="nav nav-pills --nav-tabs justify-content-center">
                 <li class="nav-item" v-for="page in pages">
                   <a class="nav-link" :class="{active: pageName()==page.name}" :href="page.href">{{page.title}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./register.html">立即报名</a>
                 </li>
               </ul>
             </div>
