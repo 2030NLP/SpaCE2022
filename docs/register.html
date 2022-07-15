@@ -236,6 +236,20 @@
         </div>
     </div></div>
 
+    <div class="container page my-5" id="the_teams"><div class="container py-2">
+        <div class="row my-2 g-4">
+            <div class="col-12">
+                <h4>已报名的队伍</h4>
+            </div>
+            <div class="col-12">
+              <p>目前共 {{all_teams.length??0}} 支队伍报名。</p>
+                <ul>
+                    <li v-for="hh in all_teams">队伍「{{hh.team_name}}」，来自{{hh.institution}}，队长是{{hh.leader}}，邮箱是{{hh.email}}。</li>
+                </ul>
+            </div>
+        </div>
+    </div></div>
+
 
 
 

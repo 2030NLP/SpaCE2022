@@ -44,12 +44,22 @@ const RootComponent = {
 
     const v = it => it;//?.value;
 
-    onMounted(()=>{});
-
     // 一个 axios 实例，方便在控制台调试
     const anAxios = axios.create({
       headers: {'Cache-Cotrol': 'no-cache'},
     });
+
+    onMounted(async()=>{
+      await get_all_teams();
+    });
+
+    const get_all_teams = async () => {
+      const resp = await anAxios.get("https://sp22.nlpsun.cn/api/eval-register");
+      // console.log(resp);
+      if (resp?.data?.code==200) {
+        localData.all_teams = resp?.data?.data ?? [];
+      };
+    };
 
     const localData = reactive({
       "ui": {
@@ -76,6 +86,7 @@ const RootComponent = {
         // card_type: "身份证",
       },
       "history": [],
+      "all_teams": [],
       "qr": null,
       //
       "user_agent": navigator.userAgent,
@@ -161,6 +172,7 @@ const RootComponent = {
         console.log(error);
         push_alert(`提交时出现故障（${error}），请稍后重试，或与工作人员联系。`, 'danger', 30000);
       };
+      await get_all_teams();
     };
 
     const submitIt = async () => {
