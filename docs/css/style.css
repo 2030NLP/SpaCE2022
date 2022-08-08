@@ -23,7 +23,10 @@ p, ul, ol, dl {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
-
+ol ol, ol ul, ul ol, ul ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
 
 /* body {
   background: #eaebee;
