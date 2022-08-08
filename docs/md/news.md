@@ -9,9 +9,9 @@
 
 - ` 8月 8日` 子任务1 和 子任务2 的 测试集以及无答案验证集 已发布，请各位参赛者查收邮件。若未收到数据，请通过邮件 sc_eval@163.com 及时与我们联系。
 - ` 8月 8日` 公布以下资料：
+  - [子任务1、2的评分脚本](https://github.com/2030NLP/SpaCE2022/tree/main/eval)
   - [SpaCE2022 数据标注文档](https://2030nlp.github.io/Sp22AnnoOL/menu)
   - [子任务3 标注示例 ](https://2030nlp.github.io/Sp22AnnoOL/examples)
-  - [子任务1、2的评分脚本](https://github.com/2030NLP/SpaCE2022/tree/main/eval)
 - ` 8月 8日` 比赛日程更新。
   <!-- | 时间 | 事项 |
 | :--: | :--: |
