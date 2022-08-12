@@ -1,31 +1,34 @@
 import os
 import argparse
-import torch
 import json
+import traceback
 
 
 def main(params):
-    answers = []
+    answers = {}
     with open(params['answer_path'], 'r', encoding='utf-8') as fin:
         for line in fin:
-            answers.append(json.loads(line))
+            js = json.loads(line)
+            answers[js['qid']] = js
 
-    predictions = []
+    predictions = {}
     with open(params['prediction_path'], 'r', encoding='utf-8') as fin:
         for line in fin:
-            predictions.append(json.loads(line))
+            js = json.loads(line)
+            if ('qid' in js):
+                predictions[js['qid']] = js
 
-    if (len(answers) != len(predictions)):
-        correct, total = 0, 0
-        status, score = 'Length dismatch', 0.0
-    else:
-        correct, total = 0, 0
-        for x, y in zip(answers, predictions):
-            total += 1
-            if (x['context'] == y['context']) and (x['judge'] == y['judge']):
+
+    correct, total = 0, 0
+    for qid in answers:
+        total += 1
+        if (qid in predictions):
+            x, y = answers[qid], predictions[qid]
+        
+            if (x['judge'] == y['judge']):
                 correct += 1
 
-        status, score = 'Accepted', correct/total
+    status, score = 'Accepted', correct/total
 
     print(status)
     print('Accuracy: %d/%d = %f' %(correct, total, score))
@@ -49,4 +52,8 @@ if __name__ == '__main__':
     params = args.__dict__
     print(params)
     
-    main(params)
+    try:
+        status, final_result = main(params)
+    except:
+        traceback.print_exc()
+        status, final_result = 'Error in execution', None

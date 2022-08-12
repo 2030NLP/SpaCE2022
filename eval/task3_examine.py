@@ -42,10 +42,6 @@ def cal_similarity(golden_tuple, predicted_tuple, corefs, params):
                 # 计算原文本的相似度
                 n_inter, n_union = intersection_and_union(p_text, g_text)
                 element_sim_score = n_inter/n_union
-                # if (str(g_idx) in corefs): # 取所有共指中重合度最高的一个
-                #     for c in corefs[str(g_idx)]:
-                #         n_inter, n_union = intersection_and_union(p_idx, c['idxes'])
-                #         element_sim_score = max(element_sim_score, n_inter/n_union)
 
                 if ((i == 0) or (i == 1)): # 如果是空间实体，使用idx评价
                     n_inter, n_union = intersection_and_union(p_idx, g_idx)
@@ -83,24 +79,27 @@ def KM_algorithm(pair_scores):
 
 
 def main(params):
-    answers = []
+    answers = {}
     with open(params['answer_path'], 'r', encoding='utf-8') as fin:
         for line in fin:
-            answers.append(json.loads(line))
+            js = json.loads(line)
+            answers[js['qid']] = js
 
-    predictions = []
+    predictions = {}
     with open(params['prediction_path'], 'r', encoding='utf-8') as fin:
         for line in fin:
-            predictions.append(json.loads(line))
+            js = json.loads(line)
+            if ('qid' in js):
+                predictions[js['qid']] = js
 
-    if (len(answers) != len(predictions)):
-        status, final_result = 'Length dismatch', None
-    else:
-        precisions, recalls, f1s = [], [], []
-
-        for x, y in zip(answers, predictions):
-            if (x['context'] != y['context']):
-                continue 
+    precisions, recalls, f1s = [], [], []
+    for qid in answers:
+        if (qid not in predictions):
+            precisions.append(0)
+            recalls.append(0)
+            f1s.append(0)
+        else:
+            x, y = answers[qid], predictions[qid]    
             
             if (params['debug']):
                 print(x['context'])
@@ -151,7 +150,10 @@ def main(params):
         status = 'Accepted'
         avg_precision = sum(precisions)/len(answers)
         avg_recall = sum(recalls)/len(answers)
-        micro_f1 = 2*(avg_precision*avg_recall)/(avg_precision+avg_recall)
+        if (avg_precision+avg_recall == 0):
+            micro_f1 = 0
+        else:
+            micro_f1 = 2*(avg_precision*avg_recall)/(avg_precision+avg_recall)
         macro_f1 = sum(f1s)/len(answers)
 
         final_result = {
