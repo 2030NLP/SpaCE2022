@@ -142,7 +142,9 @@ del {
 }
 
 .md-wrap p code,
-.md-wrap ul code {
+.md-wrap ul code,
+.md-wrap ol code,
+.md-wrap dl code {
   padding: .2em .4em;
   margin: 0;
   font-size: 85%;

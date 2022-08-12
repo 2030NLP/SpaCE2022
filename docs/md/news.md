@@ -7,6 +7,8 @@
 
 <br/>
 
+- ` 8月12日` 子任务3 的 测试集以及无答案验证集 已发布，请访问 [github](https://github.com/2030NLP/SpaCE2022/tree/main/data) 进行下载。
+
 - ` 8月12日` 关于如何提交结果：请将结果输出为 jsonl 格式（即每行一个 json 对象），以【<span style="color:var(--notice-red)">队伍名称-taskN-dev<sub>或test</sub>-1<sub>指第几次提交</sub>-0812<sub>指日期</sub>.jsonl</span>】给文件命名，以【<span style="color:var(--notice-red)">队伍名称-验证集/测试集-第N次提交-X月Y日</span>】为邮件标题，将结果文件发动到 sc_eval@163.com 。我们每周将会根据提交情况更新1到2次排行榜，仅以更新时您的最后一次提交结果为准。
 
 - ` 8月10日` 为方便新报名的参赛者下载数据，现提供已发布数据的 github 链接： [github](https://github.com/2030NLP/SpaCE2022/tree/main/data) 。
