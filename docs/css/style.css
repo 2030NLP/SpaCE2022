@@ -1,5 +1,11 @@
 
 
+.table-wrap > table {
+  /* max-width: 200%; */
+  font-size: small;
+}
+
+
 @media print {
   .container {
     max-width: 96%;
@@ -16,6 +22,9 @@
 
 pre code.hljs {
   padding: 0.5em 1em;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
 }
 
 
