@@ -12,11 +12,12 @@
 
 > - [任务简介](#intro)
 > - [数据概况](#data-overview)
->   - [子任务1：中文空间语义正误判断](#sub-task-1)
->   - [子任务2：中文空间语义异常归因与异常文本识别](#sub-task-2)
->   - [子任务3：中文空间实体识别与空间方位关系标注](#sub-task-3)
->   - [标注结果示例](https://2030nlp.github.io/Sp22AnnoOL/examples)
->   - [标注规范文档](https://2030nlp.github.io/Sp22AnnoOL/menu)
+>   - [任务要求与数据样例](#subtask-overview)
+>     - [子任务1：中文空间语义正误判断](#sub-task-1)
+>     - [子任务2：中文空间语义异常归因与异常文本识别](#sub-task-2)
+>     - [子任务3：中文空间实体识别与空间方位关系标注](#sub-task-3)
+>   - [数据规模与分布](#distribution)
+>   - [标注结果示例和标注规范文档](#examples)
 > - [评测指标](#eval)
 > - [比赛日程](#schedule)
 > - [报名方式](#register)
@@ -86,6 +87,8 @@ SpaCE2022 与 SpaCE2021 相比，扩大了数据规模，拓宽了语料类型�
 <br/><span id="data-overview"></span>
 
 ### 2.  评测数据
+
+<br/><span id="subtask-overview"></span>
 
 #### 2.1  任务要求与数据样例
 
@@ -275,7 +278,8 @@ SpaCE2022 与 SpaCE2021 相比，扩大了数据规模，拓宽了语料类型�
 
 
 
-<br/>
+
+<br/><span id="distribution"></span>
 
 #### 2.2  数据规模与分布
 
@@ -290,6 +294,20 @@ SpaCE2022 与 SpaCE2021 相比，扩大了数据规模，拓宽了语料类型�
 |子任务3| 1529 | 207 | 396 | 2132 |
 
 语料共计 285.2 万字符，每段语料字符数均值为 114.24，标准差为 49.57。语料涉及多种不同类型和来源，各类语料比例为：报刊语料（37%）、文学作品语料（25%）、中小学课本语料（20%）、交通事故判决书语料（9%），体育动作语料（6%）、地理百科语料（2%）、以及其他语料（1%）。
+
+
+
+
+<br/><span id="examples"></span>
+
+
+
+#### 2.3 标注结果示例和标注规范文档
+
+[👉标注结果示例👈](https://2030nlp.github.io/Sp22AnnoOL/examples)
+
+
+[👉标注规范文档👈](https://2030nlp.github.io/Sp22AnnoOL/menu)
 
 
 
