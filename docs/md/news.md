@@ -35,13 +35,13 @@
 | 10月14日~10月16日 | 评测研讨会，公布结果 | -->
 
 - ` 7月19日` 评测数据集将于近期发布，敬请耐心等待。已报名的队伍可扫码报名页二维码加入交流群，或通过邮件 sc_eval@163.com 与我们联系。
-- ` 6月30日` 第二十一届中国计算语言学大会（CCL 2022）技术评测任务发布 [🔗](https://mp.weixin.qq.com/s/njQCKUANS1oDEjuKj6jLsw)
+- ` 6月30日` 第二十一届中国计算语言学大会（CCL 2022）技术评测任务发布 <a href="https://mp.weixin.qq.com/s/njQCKUANS1oDEjuKj6jLsw" target="_blank">🔗</a >
 
 <br/>
 
 - 相关链接：
-  - [首届中文空间语义理解评测 SpaCE2021](https://github.com/2030NLP/SpaCE2021)
-  - [第二十一届中国计算语言学大会（CCL 2022）技术评测任务发布](http://www.cips-cl.org/static/CCL2022/cclEval/taskEvaluation/index.html)
+  - <a href="https://github.com/2030NLP/SpaCE2021" target="_blank">首届中文空间语义理解评测 SpaCE2021</a >
+  - <a href="http://www.cips-cl.org/static/CCL2022/cclEval/taskEvaluation/index.html" target="_blank">第二十一届中国计算语言学大会（CCL 2022）技术评测任务发布</a >
     <!-- - [基于前提的跨模态推理评测 PMR 2022](https://2030nlp.github.io/PMR/evaluation.html) -->
     <!-- - [第二届中文抽象语义表示解析评测 CAMRP 2022](https://github.com/GoThereGit/Chinese-AMR) -->
     <!-- - [中文语法纠错评测 CLTC 2022](https://github.com/blcuicall/CCL2022-CGEC) -->
