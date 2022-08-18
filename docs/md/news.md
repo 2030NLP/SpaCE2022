@@ -7,6 +7,8 @@
 
 <br/>
 
+- ` 8月18日` 子任务1、子任务2和子任务3的验证集答案发布，请在 [此处]( https://github.com/2030NLP/SpaCE2022/tree/main/data) 下载。
+
 - ` 8月13日` 评分脚本有所更新，请在 [此处](https://github.com/2030NLP/SpaCE2022/tree/main/eval) 下载。
 
 - ` 8月12日` 子任务3 的 训练集以及无答案验证集 已发布，请访问 [github](https://github.com/2030NLP/SpaCE2022/tree/main/data) 进行下载。
