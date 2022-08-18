@@ -304,10 +304,9 @@ SpaCE2022 与 SpaCE2021 相比，扩大了数据规模，拓宽了语料类型�
 
 #### 2.3 标注结果示例和标注规范文档
 
-[👉标注结果示例👈](https://2030nlp.github.io/Sp22AnnoOL/examples)
+<a href="https://2030nlp.github.io/Sp22AnnoOL/examples" target="_blank">👉标注结果示例👈</a >
 
-
-[👉标注规范文档👈](https://2030nlp.github.io/Sp22AnnoOL/menu)
+<a href="https://2030nlp.github.io/Sp22AnnoOL/menu" target="_blank">👉标注规范文档👈</a >
 
 
 
