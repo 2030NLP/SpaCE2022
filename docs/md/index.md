@@ -11,10 +11,12 @@
 <a target="_blank" href="https://2030nlp.github.io/SpaCE2022/register"><span style="color:var(--notice-red)">👉 **点我立即报名** 👈</span></a>
 
 > - [任务简介](#intro)
-> - [数据概况](#data-overview)[👉标注示例👈](https://2030nlp.github.io/Sp22AnnoOL/examples)[👉标注文档👈](https://2030nlp.github.io/Sp22AnnoOL/menu)
+> - [数据概况](#data-overview)
 >   - [子任务1：中文空间语义正误判断](#sub-task-1)
 >   - [子任务2：中文空间语义异常归因与异常文本识别](#sub-task-2)
 >   - [子任务3：中文空间实体识别与空间方位关系标注](#sub-task-3)
+>   - [标注结果示例](https://2030nlp.github.io/Sp22AnnoOL/examples)
+>   - [标注规范文档](https://2030nlp.github.io/Sp22AnnoOL/menu)
 > - [评测指标](#eval)
 > - [比赛日程](#schedule)
 > - [报名方式](#register)
