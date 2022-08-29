@@ -7,6 +7,11 @@
 
 <br/>
 
+- ` 8月29日` <span style="color:var(--notice-red)"><strong>重要：</strong></span>为响应CCL会议日程安排需要，<span style="color:var(--notice-red)"><strong>对比赛日程做如下调整</strong></span>：
+  - 测试集发布、结果提交开始时间 <s>由 9月18日</s> 改为 **9月15日 09:00**
+  - 测试集结果提交截止时间 <s>由 9月28日</s> 改为 **9月18日 22:00**
+  - 最终版本的模型及技术报告提交截止时间 <s>由 10月8日</s> 改为 **9月25日 22:00**
+
 - ` 8月18日` 子任务1、子任务2和子任务3的验证集答案发布，请在 <a href="https://github.com/2030NLP/SpaCE2022/tree/main/data" target="_blank">此处</a> 下载。
   - ` 8月27日` 修正：先前子任务3验证集文件中不含答案，现已修复。
 
