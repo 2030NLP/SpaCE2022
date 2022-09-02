@@ -7,6 +7,7 @@
 
 <br/>
 
+- ` 9月 2日` 修正 子任务2 指标① 的计算方式，更新 <a href="https://github.com/2030NLP/SpaCE2022/tree/main/eval" target="_blank">评分脚本</a> ，更新子任务2评分标准表述。
 - ` 8月29日` <span style="color:var(--notice-red)"><strong>重要：</strong></span>为响应CCL会议日程安排需要，<span style="color:var(--notice-red)"><strong>对比赛日程做如下调整</strong></span>：
   - 测试集发布、结果提交开始时间 <s>由 9月18日</s> 改为 **9月15日 09:00**
   - 测试集结果提交截止时间 <s>由 9月28日</s> 改为 **9月18日 22:00**

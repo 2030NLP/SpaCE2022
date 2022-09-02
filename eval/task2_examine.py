@@ -48,6 +48,7 @@ def main(params):
             max_precision, max_recall, max_f1 = 0.0, 0.0, 0.0
             predicted_type = [0, 0, 0]
             golden_type = [0, 0, 0]
+            type_match = False
             type_map = {
                 'A': 0,
                 'B': 1,
@@ -75,6 +76,7 @@ def main(params):
 
                         n_inter, n_input, n_target = intersection(input_set, target_set)
                         precision, recall, f1 = f1_score(n_inter, n_input, n_target)
+                        _tmatch = (golden['type'] == prediction['type'])
                     
                     elif (prediction_level == 'strict'): # 按元素重合度打分（要求类别相同）
                         if (golden['type'] != prediction['type']):
@@ -98,11 +100,13 @@ def main(params):
 
                     if (f1 > max_f1):
                         max_precision, max_recall, max_f1 = precision, recall, f1
+                        if (prediction_level == 'loose'):
+                            type_match = _tmatch
             
             precisions.append(max_precision)
             recalls.append(max_recall)
             f1s.append(max_f1)
-            if (predicted_type == golden_type):
+            if ((prediction_level == 'strict') and (predicted_type == golden_type)) or ((prediction_level == 'loose') and (type_match)):
                 correct_type_num += 1
 
         status = 'Accepted'
