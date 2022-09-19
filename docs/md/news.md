@@ -8,6 +8,20 @@
 <br/>
 
 
+- ` 9月15日` 测试集得分及排名公布，请看 <a href="https://github.com/2030NLP/SpaCE2022/tree/main/data" target="_blank">排行榜</a> 。请各位参赛者按规定在9月22日前提交报告、代码、模型，以便最终评定奖项。
+  > 关于材料提交：
+  > - 已经提交结果的队伍请在9月25日22点前提交技术报告、代码、模型文件（需自行上传至网盘并提供链接，或联系我们协商如何提交）。只有提交上述材料的队伍才会参与奖项评定。
+  > - 报告需注明：队伍名称，各成员真实姓名，所属单位，联系方式。如为学生参赛，有指导老师也可单独注明。
+  > - 格式及字数无严格要求，可参考：<a href="http://jcip.cipsc.org.cn/CN/column/column33.shtml" target="_blank">中文信息学报格式</a>、<a href="http://cips-cl.org/static/CCL2022/cclEssay/notice/index.html#%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF" target="_blank">CCL会议格式</a>。
+  > - 如有任何问题，欢迎通过微信或邮件与我们联系。（ sc_eval@163.com ）
+  >
+  > 另附CCL会议关于参会的通知：
+  > - 1）获奖队伍需要提交系统技术报告，供任务组织者进行任务总结
+  > - 2）任务组织者根据评测成绩、创新性等情况，选择若干队伍在workshop上做报告（具体名额，要根据会议议程安排来确定，会尽早通知大家）
+  > - 3）获奖队伍应该注册并参加CCL evaluation task workshop
+  > - 4）做报告的队伍应该注册并参加CCL evaluation task workshop
+
+
 - ` 9月15日` 测试集题目发布，请在 <a href="https://github.com/2030NLP/SpaCE2022/tree/main/data" target="_blank">此处</a> 下载。<span style="color:var(--notice-red)"><strong>请在9月18日22:00前提交测试集结果</strong></span>
 
 - ` 9月 2日` 修正 子任务2 指标① 的计算方式，更新 <a href="https://github.com/2030NLP/SpaCE2022/tree/main/eval" target="_blank">评分脚本</a> ，更新子任务2评分标准表述。
