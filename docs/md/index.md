@@ -7,6 +7,7 @@
 - 组织者：詹卫东，穗志方
 - 工作人员：孙春晖，李楠，邢丹，王诚文，岳朋雪，王希豪，邱晓枫，祝方韦 等
 - 联系方式：sc_eval@163.com
+- 项目信息：本课题得到2022年度教育部人文社会科学重点研究基地重大项目“面向机器语言能力评测的综合型语言知识库研究”（项目批准号：22JJD740004）资助
 
 <a target="_blank" href="https://2030nlp.github.io/SpaCE2022/register"><span style="color:var(--notice-red)">👉 **点我立即报名** 👈</span></a>
 
